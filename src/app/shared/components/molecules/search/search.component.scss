@@ -1,0 +1,49 @@
+@import "./src/shared.scss";
+
+.search {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: $dark_blue;
+  display: flex;
+  justify-content: space-between;
+
+  &__input {
+    border: none;
+    background-image: none;
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 14px;
+    color: $white;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba($color: $white, $alpha: 0.5);
+    }
+  }
+
+  &__icon {
+    svg {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+  }
+
+}
+
+@media screen and (min-width: map-get($breakpoints, "md")) {
+  .search {
+    padding: 8px 16px;
+    &__icon {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+<div class="card-products">
+  <a [href]="data.linkCategory">
+    <h3 class="card-products__title">{{ data.category }}</h3>
+    <div class="card-products__items">
+      <div *ngFor="let item of data.products" class="card-products__item">
+        <div class="card-product__image">
+          <img [src]="item.img" [alt]="item.alt">
+        </div>
+        <p *ngIf="item.name" class="card-product__name">{{ item.name }}</p>
+        <p *ngIf="item.offerPrice" class="card-product__offerprice">{{ item.offerPrice }}</p>
+        <p *ngIf="item.price" class="card-product__price" [ngClass]="{'card-product__oldprice': !!item.offerPrice}">{{ item.price }}</p>
+      </div>
+    </div>
+  </a>
+</div>

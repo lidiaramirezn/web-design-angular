@@ -1,0 +1,20 @@
+$properties: (
+  none,
+  block,
+  flex
+);
+
+@mixin display($value: null) {
+  @each $property in $properties {
+  .d#{if($value, '-#{$value}', '')}-#{$property} {
+    display: $property;
+  }}
+}
+
+@include display();
+
+@each $value, $breakpoint in $breakpoints {
+  @include media-breakpoint($breakpoint) {
+    @include display($value);
+  }
+}

@@ -1,0 +1,32 @@
+<div class="swiper d-md-none">
+  <swiper
+    [slidesPerView]="'auto'"
+    [navigation]="false"
+    [ngClass]="mainClass">
+    <ng-container *ngFor="let item of data">
+      <ng-template swiperSlide>
+        <app-card-product [text]="item.text" [data]="item"></app-card-product>
+      </ng-template>
+    </ng-container>
+  </swiper>
+</div>
+
+<div class="swiper d-none d-md-block">
+  <swiper
+    [loop]="true"
+    [slidesPerView]="'auto'"
+    [navigation]="true"
+    [ngClass]="mainClass">
+    <ng-container *ngFor="let item of data; index as i">
+      <ng-template swiperSlide *ngIf="i === 0 || i % 4 === 0">
+        <div class="d-flex px-5">
+          <ng-container *ngFor="let item of slicedData(i)" >
+            <a href="item.link" class="mx-1">
+              <app-card-product [text]="item.text" [data]="item"></app-card-product>
+            </a>
+          </ng-container>
+        </div>
+      </ng-template>
+    </ng-container>
+</swiper>
+</div>

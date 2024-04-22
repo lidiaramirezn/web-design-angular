@@ -1,0 +1,272 @@
+@import "./src/shared.scss";
+
+.home {
+
+  &__article {
+    &-all-categories {
+      background-color: $yellow;
+      margin-top: 30px;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    &-all-brands {
+      background-color: $blue;
+      color: $white;
+      padding: 40px 20px;
+
+      .home__subtitle {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+
+  &__categories {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+    align-items: start;
+
+    &-background {
+      position: absolute;
+      top: -200px;
+      left: 0;
+    }
+
+    &-circle {
+      margin-bottom: 5px;
+      border-radius: 50%;
+      width: 160px;
+      height: 160px;
+      background-color: $white;
+      overflow: hidden;
+      @extend %d-flex-center;
+    }
+  }
+
+  &__category {
+    @extend %d-flex-center;
+    flex-direction: column;
+
+    a {
+      &:hover {
+        transform: scale(1.05);
+        transition: all 0.5s ease-out;
+      }
+    }
+
+    &-image {
+      width: 160px;
+      height: 160px;
+
+      & > img {
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+
+}
+
+.carousel {
+  &__wrapper-image {
+    position: relative;
+    max-height: 430px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__wrapper-background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(89.76deg, rgba(18, 16, 52, 0.828) 0.19%,
+                rgba(18, 16, 57, 0.729) 37.75%,
+                rgba(15, 15, 147, 0.117) 110.66%);
+  }
+
+  &__wrapper-texts {
+    position: absolute;
+    left: $padding-mobile;
+    right: $padding-mobile;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $white;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+
+    span {
+      color: $yellow;
+    }
+  }
+
+  &__description {
+    margin-top: 24px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "sm")) {
+  .home {
+    &__subtitle {
+      padding: 20px 0;
+    }
+  }
+
+  .carousel {
+    &__title {
+      font-size: 32px;
+    }
+
+    &__description {
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "md")) {
+  .home {
+
+    &__subtitle {
+      font-size: 28px;
+    }
+
+    &__main,
+    &__article,
+    &__section {
+      max-width: $max-width-tablet;
+      margin-right: auto;
+      margin-left: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    &__article {
+      &-all-categories {
+        padding: 80px 0;
+
+        .home__subtitle {
+          font-size: 36px;
+        }
+      }
+
+      &-all-brands {
+        padding: 60px 20px 30px;
+      }
+    }
+
+    &__main {
+      padding: 20px;
+      background-color: $white;
+      border: 1px solid #DCDEE3;
+      margin: 24px auto;
+    }
+
+    &__categories {
+      display: flex;
+      justify-content: space-between;
+
+      &-circle {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+      }
+    }
+
+    &__category {
+      p {
+        font-size: 18px;
+      }
+    }
+
+    &__main-arrow {
+      svg {
+        rotate: 270deg;
+      }
+    }
+
+    &__main-category {
+      font-weight: 500;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 12px;
+      border-radius: 5px;
+      min-width: 220px;
+      margin-right: 20px;
+      margin-left: 20px;
+
+      &:hover,
+      &--hover {
+        border-left: 3px solid $purple;
+        background-color: rgba($purple, 0.1) ;
+      }
+    }
+
+    &__main-subcategory {
+      background-color: $white;
+      position: absolute;
+      z-index: 20;
+      top: 60px;
+      left: 270px;
+      min-width: 250px;
+      border-radius: 5px;
+      box-shadow: 0 1px 6px 0 rgb(0 0 0 / 9%);
+      padding: 20px;
+      min-height: 230px;
+
+      & > li {
+        padding: 15px 0;
+
+        &:hover {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .carousel {
+    &__wrapper-image {
+      max-height: 500px;
+    }
+
+    &__title {
+      font-size: 56px;
+      max-width: 750px;
+    }
+
+    &__description {
+      font-size: 20px;
+    }
+
+    &__wrapper-texts {
+      left: 50px;
+      right: 50px;
+    }
+  }
+
+}
+
+@media screen and (min-width: map-get($breakpoints, "lg")) {
+  .home {
+    &__main,
+    &__article,
+    &__section {
+      max-width: $max-width-desktop;
+    }
+  }
+}

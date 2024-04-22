@@ -1,0 +1,22 @@
+$aligns: (center, left, right, ellipsis, break-word);
+
+@mixin media-text($value, $breakpoint: '') {
+  .text-#{if($value==break-word, 'break', $value)} {
+    @if $value==break-word {
+      word-break: break-word;
+      word-wrap: break-word;
+    } @else {
+      text-align: $value;
+    }
+  }
+}
+
+@mixin media-breakpoint($value) {
+  @media only screen and (max-width: $value) {
+    @content;
+  }
+}
+
+@each $type in $aligns {
+  @include media-text($type);
+}

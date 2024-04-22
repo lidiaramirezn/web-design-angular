@@ -1,0 +1,46 @@
+<div class="swiper-alone-mobile d-block d-md-none" [ngSwitch]="type" *ngIf="!!data.length">
+  <swiper
+    [slidesPerView]="'auto'"
+    [spaceBetween]="10"
+    [ngClass]="mainClass"
+    >
+    <ng-container *ngFor="let item of data; index as i">
+      <ng-template swiperSlide *ngSwitchCase="'slide-various-product'">
+        <app-card-various-products [text]="item.text" [data]="item"></app-card-various-products>
+      </ng-template>
+      <ng-container *ngSwitchDefault>
+        <ng-container *ngIf="i !== undefined && (i === 0 || i % count === 0)" >
+          <ng-template  swiperSlide >
+            <div class="d-flex swiper-alone-mobile__brands">
+              <ng-container *ngFor="let item of slicedData(i)" >
+                <div class="swiper-alone-mobile__brands-image d-flex">
+                  <img [src]="item.img" [alt]="item.alt">
+                </div>
+              </ng-container>
+            </div>
+          </ng-template>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </swiper>
+</div>
+<div class="d-none d-md-block" [ngSwitch]="type">
+  <ng-container *ngSwitchCase="'slide-various-product'">
+    <div class="gallery-desktop">
+      <ng-container *ngFor="let item of data">
+        <div class="gallery-desktop__card">
+          <app-card-various-products [text]="item.text" [data]="item"></app-card-various-products>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <div class="gallery-desktop gallery-desktop__brands">
+      <ng-container *ngFor="let item of data">
+        <div class="gallery-desktop__brands-image d-flex-center">
+          <img [src]="item.img" [alt]="item.alt">
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

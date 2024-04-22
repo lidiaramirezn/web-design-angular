@@ -1,0 +1,51 @@
+<div class="sidebar" [class.sidebar-slide-in]="isOpen" >
+  <div class="sidebar-close" (click)="close()">
+    <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+  </div>
+  <ul class="sidebar__item-wrapper" [ngClass]="{'d-none': !!idItemCategoryClick}">
+    <div class="fade-in">
+      <li *ngFor="let category of data"
+        (mouseenter)="idItemCategory = category.id"
+        (click)="idItemCategoryClick = category.id"
+        (mouseleave)="idItemCategory = null">
+        <a class="d-flex sidebar__item" [ngClass]="{'sidebar__item--hover': category.id === idItemCategory}">
+          <p>{{ category.title }}</p>
+          <i class="sidebar__item-arrow">
+            <svg width="16" height="9" viewBox="0 0 18 11" fill="#A3A3ED" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 10.2857L0 1.56285L1.6125 0L9 7.19637L16.3875 0.0363447L18 1.59919L9 10.2857Z" fill="#A3A3ED"/>
+            </svg>
+          </i>
+        </a>
+        <ul class="sidebar__subcategory d-none d-md-block" *ngIf="category.id === idItemCategory">
+          <ng-container *ngFor="let subcategory of category.subcategory">
+            <li>
+              <a [href]="subcategory.link">
+                {{ subcategory.title }}
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+    </div>
+  </ul>
+  <ul class="sidebar__subcategory-mobile d-md-none" [ngClass]="{'d-block': !!idItemCategoryClick}">
+    <ng-container *ngFor="let category of data" >
+      <ng-container *ngIf="category.id === idItemCategoryClick">
+        <div class="fade-in">
+          <li (click)="idItemCategoryClick = null">
+            <i>
+              <svg width="16" height="9" viewBox="0 0 18 11" fill="#A3A3ED" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 10.2857L0 1.56285L1.6125 0L9 7.19637L16.3875 0.0363447L18 1.59919L9 10.2857Z" fill="#A3A3ED"/>
+              </svg>
+            </i>
+            <p>Volver</p>
+          </li>
+          <li *ngFor="let subcategory of category.subcategory">
+            {{ subcategory.title }}
+          </li>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ul>
+</div>
+<div class="overlay" [class.overlay-show]="isOpen"></div>

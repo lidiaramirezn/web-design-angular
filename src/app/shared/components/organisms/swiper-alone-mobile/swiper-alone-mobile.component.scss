@@ -1,0 +1,60 @@
+@import "./src/shared.scss";
+
+.swiper-alone-mobile {
+  &__brands {
+    justify-content: space-between;
+  }
+}
+
+.swiper-alone-mobile__brands {
+  &-image {
+    width: 100px;
+    height: 80px;
+    @extend %d-align-center;
+
+    & > img {
+      height: auto;
+      width: auto;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "sm")) {
+  .swiper-alone-mobile__brands {
+    &-image {
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "md")) {
+  .gallery-desktop {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &__brands-image {
+      width: 200px;
+      height: 80px;
+      margin-bottom: 50px;
+    }
+
+    &__card {
+      background-color: $white;
+      border-radius: 10px;
+      max-width: 300px;
+    }
+  }
+
+  .gallery-desktop__brands {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "lg")) {
+  .gallery-desktop {
+    &__card {
+      max-width: 380px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<div class="card-product">
+  <a [href]="data.link">
+    <div class="card-product__tag" *ngIf="!!data.tag">
+      <p>{{ data.tag }}</p>
+    </div>
+      <div class="card-product__image">
+        <img [src]="data.img" [alt]="data.alt">
+      </div>
+      <p class="card-product__name">{{ data.name }}</p>
+      <p *ngIf="data.offerPrice" class="card-product__offerprice">{{ data.offerPrice }}</p>
+      <p class="card-product__price" [ngClass]="{'card-product__oldprice': !!data.offerPrice}">{{ data.price }}</p>
+  </a>
+</div>

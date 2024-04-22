@@ -1,0 +1,145 @@
+@import "./styles/main.scss";
+
+body {
+  /* font-family: Roboto,
+  "Helvetica Neue", sans-serif; */
+  font-family: 'Epilogue', sans-serif;
+  color: $black;
+  background-color: $background;
+  font-size: 16px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper__various-cards {
+  .swiper-slide {
+    border-radius: 10px;
+    background-color: $white;
+    max-width: 280px;
+    margin-left: 20px;
+
+    &:first-child {
+      margin-left: 20px;
+    }
+
+    &:last-child {
+      margin-right: 20px;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, "md")) {
+      max-width: 380px !important;
+      width: 380px !important;
+    }
+  }
+}
+
+.swiper__card {
+
+  .swiper-slide {
+    border-radius: 10px;
+    background-color: $white;
+    max-width: 240px;
+    filter: drop-shadow(1px 3px 6px rgba(31, 55, 139, 0.28));
+    margin: 10px 10px 10px 20px;
+
+    &:last-child {
+      margin-right: 20px;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, "md")) {
+      margin: 10px;
+      max-width: none;
+      border-radius: 0;
+      background-color: initial;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    border-radius: 50%;
+    background-color: $blue;
+    width: 44px;
+    height: 44px;
+    color: $yellow;
+    top: 50%;
+    bottom: auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    &::after {
+      font-size: 14px;
+      font-weight: bold;
+      color: $white;
+    }
+
+    @media screen and (min-width: map-get($breakpoints, "md")) {
+      display: flex;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 0;
+  }
+
+  .swiper-button-next {
+    right: 0;
+  }
+}
+
+.carousel {
+  .swiper-button-next,
+  .swiper-button-prev {
+    border: 3px solid yellow;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    color: $yellow;
+    top: auto;
+    bottom: 30px;
+
+
+    &::after {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 20px;
+
+    @media screen and (min-width: map-get($breakpoints, "md")) {
+      left: 50px;
+    }
+  }
+
+  .swiper-button-next {
+    left: 150px;
+
+    @media screen and (min-width: map-get($breakpoints, "md")) {
+      left: 180px;
+    }
+  }
+
+  .swiper-pagination {
+    width: auto !important;
+    left: 68px !important;
+    bottom: 30px !important;
+
+    @media screen and (min-width: map-get($breakpoints, "md")) {
+      left: 98px !important;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: $white;
+  }
+}
+
+.text-yellow {
+  color: $yellow;
+}

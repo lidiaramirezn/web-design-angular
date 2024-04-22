@@ -1,0 +1,92 @@
+@import "./src/shared.scss";
+
+.footer {
+  background-color: $black;
+  color: $white;
+  padding: 40px $padding-mobile;
+  font-size: 1rem;
+
+  &__text-follow-us {
+    margin-top: 30px;
+    font-weight: bold;
+  }
+
+  &__networks {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__accordion {
+    width: 100%;
+
+    &-menu {
+      padding: 12px 0;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-arrow {
+      transition: all 0.4s ease;
+    }
+
+    &-submenu {
+      height: 0;
+      overflow: hidden;
+      font-size: 0.875em;
+      transition: height 0.4s ease;
+    }
+
+    &-link {
+      margin: 12px 20px;
+      transition: all 0.25s ease-in-out;
+    }
+
+    &-icon {
+      width: 18px;
+    }
+
+    &-information {
+      margin-left: 28px;
+    }
+  }
+}
+
+.active .footer__accordion-arrow {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: map-get($breakpoints, "md")) {
+  .footer {
+    &__container {
+      max-width: $max-width-tablet;
+      margin-right: auto;
+      margin-left: auto;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+
+      &-icon {
+        width: 28px;
+      }
+
+      &-information {
+        margin-left: 38px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: map-get($breakpoints, "md")) {
+  .footer {
+    &__container {
+      max-width: $max-width-desktop;
+    }
+  }
+}

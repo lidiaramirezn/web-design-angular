@@ -1,0 +1,118 @@
+<section class="home">
+<div class="home__main d-flex position-relative">
+  <ul class="d-none d-md-block py-4 ">
+    <li *ngFor="let category of categoryData" (mouseenter)="idItemCategory = category.id" (mouseleave)="idItemCategory = null" >
+      <a href="/" class="d-flex home__main-category" [ngClass]="{'home__main-category--hover': category.id === idItemCategory}">
+        <p>{{ category.title }}</p>
+        <i class="home__main-arrow">
+          <svg width="16" height="9" viewBox="0 0 18 11" fill="#A3A3ED" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 10.2857L0 1.56285L1.6125 0L9 7.19637L16.3875 0.0363447L18 1.59919L9 10.2857Z" fill="#A3A3ED"/>
+          </svg>
+        </i>
+      </a>
+      <ul class="home__main-subcategory" *ngIf="category.id === idItemCategory" >
+        <li *ngFor="let subcategory of category.subcategory">
+          <a [routerLink]="subcategory.link">
+            {{ subcategory.title }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <swiper class="carousel"
+    [slidesPerView]="1"
+    [navigation]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [keyboard]="{
+      enabled: true
+    }"
+    [effect]="'fade'"
+    [loop]="true"
+    [autoplay]="{
+      delay: 3500,
+      disableOnInteraction: false
+    }"
+    >
+    <ng-container *ngFor="let item of carouselData">
+      <ng-template swiperSlide >
+        <div class="carousel__wrapper-image">
+          <picture>
+            <source media="(max-width: 768px)" [srcset]="item.imgMobile"/>
+            <img [src]="item.imgDesktop" alt="" />
+          </picture>
+          <div class="carousel__wrapper-background"></div>
+          <div class="carousel__wrapper-texts">
+            <h1 class="carousel__title" [innerHTML]="item.title"></h1>
+            <p class="carousel__description">{{ item.description }}</p>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </swiper>
+</div>
+
+  <div class="pt-4 pb-2 home__article">
+    <app-swiper-alone-mobile
+      type="slide-various-product"
+      [data]="dataVariousProduct"
+      mainClass="swiper__various-cards">
+    </app-swiper-alone-mobile>
+  </div>
+  <article class="py-2 home__article">
+    <h2 class="home__subtitle pb-2">Recomendado para ti</h2>
+    <app-swiper
+      [data]="recommendedData"
+      type="slide-product"
+      mainClass="swiper__card">
+    </app-swiper>
+
+  </article>
+  <article class="py-2 home__article">
+    <h2 class="home__subtitle pb-2">Las ofertas que no te podrás perder</h2>
+    <app-swiper
+      [data]="offersData"
+      type="slide-product"
+      mainClass="swiper__card">
+    </app-swiper>
+  </article>
+  <article class="py-2 home__article">
+    <h2 class="home__subtitle pb-2">Los productos más vendidos</h2>
+    <app-swiper
+      [data]="bestSellersData"
+      type="slide-product"
+      mainClass="swiper__card">
+    </app-swiper>
+  </article>
+  <article class="home__article-all-categories">
+    <img class="d-none d-md-block home__categories-background" src="./assets/background-category.png" alt="">
+    <section class="home__section">
+      <h2 class="home__subtitle text-center">Encuentra de todo para tu negocio</h2>
+      <div class="home__categories">
+        <div class="home__category" *ngFor="let category of categoryData">
+          <a [routerLink]="category.link" class>
+            <div class="d-flex home__categories-circle">
+                <img [src]="category.img" [alt]="category.img">
+            </div>
+            <p class="text-center">
+              <strong>{{ category.title }}</strong>
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </article>
+  <article class="home__article-all-brands">
+    <section class="home__section">
+      <h2 class="home__subtitle text-center">Más de 10 marcas confían en nosotros</h2>
+      <app-swiper-alone-mobile
+        countImages="3"
+        [data]="brandData">
+      </app-swiper-alone-mobile>
+    </section>
+  </article>
+</section>
